@@ -1,7 +1,14 @@
 import io
 import base64
 import uvicorn
-import fastanpr
+import sys
+import os
+
+# Ajouter le dossier courant au path Python
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from anpr import fastanpr
+from anpr.version import __version__
 import numpy as np
 
 from PIL import Image
@@ -11,7 +18,7 @@ from pydantic import BaseModel
 app = FastAPI(
     title="FastANPR",
     description="A web server for FastANPR hosted using FastAPI",
-    version=fastanpr.__version__
+    version=__version__
 )
 fast_anpr = fastanpr.FastANPR()
 
